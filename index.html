@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="UniDexFPM: Universal Dexterous Functional Pre-grasp Manipulation Via Diffusion Policy">
+  <meta name="keywords" content="Dexterous Manipulation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VoxPoser</title>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FV4ZJ9PVSV"></script>  
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-FV4ZJ9PVSV');
+  </script>
+
+  <script>
+
+    function updateInteractive() {
+      var task = document.getElementById("interative-menu").value;
+
+      console.log("interactive", task)
+
+      // if task does not contain the string "towel"
+      if (task.indexOf("towel") == -1) {
+        var video = document.getElementById("interactive-video");
+        video.src = "media/videos/" + 
+                    task + 
+                    ".mp4"
+        video.play();
+
+        var html = document.getElementById("interactive-html-1");
+        html.src = "media/interactive/" + 
+                    task + 
+                    ".html"
+
+        // hide the second iframe container
+        var iframeContainer2 = document.getElementById("second-iframe-container");
+        iframeContainer2.style.display = "none";
+      } else {
+        var video = document.getElementById("interactive-video");
+        video.src = "media/videos/hang-towel.mp4"
+        video.play();
+
+        var html1 = document.getElementById("interactive-html-1");
+        html1.src = "media/interactive/hang-towel-1.html"
+
+        // show and set the source for the second iframe
+        var html2 = document.getElementById("interactive-html-2");
+        html2.src = "media/interactive/hang-towel-2.html"
+
+        // show the second iframe container
+        var iframeContainer2 = document.getElementById("second-iframe-container");
+        iframeContainer2.style.display = "block";
+      }
+    }
+
+
+
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body onload="updateInteractive();">
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-fullhd">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">UniDexFPM: Universal Dexterous Functional Pre-grasp Manipulation Via Diffusion Policy</h1>
+          <!-- <h3 class="title is-4 conference-authors"><a target="_blank" href="https://www.corl2023.org/">CoRL 2023 (Oral)</a></h3> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a target="_blank" href="https://tianhaowuhz.github.io/">Tianhao Wu</a><sup>1,2,3*</sup>,
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="">YunChong Gan</a><sup>1*</sup>,
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="https://aaronanima.github.io/">Mingdong Wu</a><sup>1,2,3</sup>,
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="">Jingbo Cheng</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="https://www.yangyaodong.com/">Yaodong Yang</a><sup>4,5</sup>,
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="https://yzhu.io/">Yixin Zhu</a><sup>4</sup>
+            </span>
+            <span class="author-block">
+              <a target="_blank" href="https://zsdonghao.github.io/">Hao Dong</a><sup>1,2,3,&#x2709;</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Center on Frontiers of Computing Studies, School of Computer Science, Peking University</span>
+            <span class="author-block"><sup>2</sup>PKU-Agibot Lab, School of Computer Science, Peking University</span>
+            <span class="author-block"><sup>3</sup>National Key Laboratory for Multimedia Information Processing, School of Computer Science, Peking University</span>
+            <span class="author-block"><sup>4</sup>Institute for Artificial Intelligence, Peking University</span>
+            <span class="author-block"><sup>5</sup>National Key Laboratory of General AI, Beijing Institute for General Artificial Intelligence</span>
+            <span class="author-block"><sup>*</sup>Equal Contribution</span>
+            <span class="author-block"><sup>&#x2709</sup>Corresponding Author</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a target="_blank" href="unidexfpm.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+            <!-- Arxiv Link. -->
+            <!-- <span class="link-block">
+              <a target="_blank" href="https://arxiv.org/abs/2307.05973"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fas fa-file"></i>
+                </span>
+                <span>ArXiv</span>
+              </a>
+            </span> -->
+
+            <!-- Video Link. -->
+            <!-- <span class="link-block">
+              <a target="_blank" href="https://youtu.be/Yvn4eR05A3M"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fab fa-youtube"></i>
+                </span>
+                <span>Video</span>
+              </a>
+            </span> -->
+
+            <!-- Code Link. -->
+            <span class="link-block">
+              <a target="_blank" href="here"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fab fa-github"></i>
+                </span>
+                <span>Code (Comming Soon)</span>
+                </a>
+            </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-fullhd">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-vcentered  is-centered">
+          <img src="media/figures/teaser.png" class="interpolation-image" style="width: 100%; height: 100%;"/>
+          </br>
+        </div>
+        <br>
+        <h2 class="subtitle has-text-centered">
+        <span class="dperact">UniDexFPM</span> utilizes extrinsic dexterity to continuously reposition and reorient diverse objects to successfully match the goal functional grasp
+        poses.
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/cup/cup_s105/cup_s105_h264.mp4"
+                    type="video/mp4">
+          </video>
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/cup/cup_s112/cup_s112_h264.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item">
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/binoculars/binoculars_21/binoculars_21_h264.mp4"
+                    type="video/mp4">
+          </video>
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/binoculars/binoculars_7/binoculars_7_h264.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item">
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/bottle/bottle_s109/bottle_s109_h264.mp4"
+                    type="video/mp4">
+          </video>
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/bottle/bottle_s125/bottle_s125_h264.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item">
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/bowl/bowl_s101/bowl_s101_h264.mp4"
+                    type="video/mp4">
+          </video>
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/bowl/bowl_s102/bowl_s102_h264.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item">
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/cameras/cameras_s109/cameras_s109_h264.mp4"
+                    type="video/mp4">
+          </video>
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/cameras/cameras_s109/cameras_s109_h264.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item">
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/cylinder_bottle/cylinder_bottle_s106/cylinder_bottle_s106_h264.mp4"
+                    type="video/mp4">
+          </video>
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/cylinder_bottle/cylinder_bottle_s470/cylinder_bottle_s470_h264.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item">
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/flashlight/flashlight_1/flashlight_1_h264.mp4"
+                    type="video/mp4">
+          </video>
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/flashlight/flashlight_10/flashlight_10_h264.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item">
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/gamecontroller/gamecontroller_maya3/gamecontroller_maya3_h264.mp4"
+                    type="video/mp4">
+          </video>
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/gamecontroller/gamecontroller_maya3/gamecontroller_maya3_h264.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item">
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/headphones/contactpose_headphones/contactpose_headphones_h264.mp4"
+                    type="video/mp4">
+          </video>
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/headphones/headphones_s111/headphones_s111_h264.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item">
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/knife/knife_s118/knife_s118_h264.mp4"
+                    type="video/mp4">
+          </video>
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/knife/knife_s146/knife_s146_h264.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item">
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/lotion_pump/lotion_pump_s103/lotion_pump_s103_h264.mp4"
+                    type="video/mp4">
+          </video>
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/lotion_pump/lotion_pump_s108/lotion_pump_s108_h264.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item">
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/mug/mug_s014/mug_s014_h264.mp4"
+                    type="video/mp4">
+          </video>
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/mug/mug_s014/mug_s014_h264.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item">
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/screwdriver/screwdriver_0/screwdriver_0_h264.mp4"
+                    type="video/mp4">
+          </video>
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/screwdriver/screwdriver_3/screwdriver_3_h264.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item">
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/trigger_sprayer/dispenser26/dispenser26_h264.mp4"
+                    type="video/mp4">
+          </video>
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/trigger_sprayer/trigger_sprayer_s101/trigger_sprayer_s101_h264.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item">
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/wineglass/wineglass_18/wineglass_18_h264.mp4"
+                    type="video/mp4">
+          </video>
+          <video poster="" autoplay muted loop width="50%">
+            <source src="media/videos/demo/wineglass/wineglass_20/wineglass_20_h264.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<h2 class="subtitle has-text-centered">
+</br>
+  UniDexFPM can generalize to diverse objects and functional goal poses without object geometry information.
+</h2>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Objects in the real world are often not naturally
+        positioned for functional grasping, which usually requires
+        repositioning and reorientation before they can be grasped,
+        a process known as pre-grasp manipulation. However, ef-
+        fective learning of universal dexterous functional pre-grasp
+        manipulation necessitates precise control over relative position,
+        relative orientation, and contact between the hand and object,
+        while generalizing to diverse dynamic scenarios with varying
+        objects and goal poses. We address the challenge by using
+        teacher-student learning. We propose a novel mutual reward
+        that incentivizes agents to jointly optimize three key criteria.
+        Furthermore, we introduce a pipeline that leverages a mixture-of-
+        experts strategy to learn diverse manipulation policies, followed
+        by a diffusion policy to capture complex action distributions
+        from these experts. Our method achieves a success rate of
+        72.6% across 30+ object categories encompassing 1400+ objects
+        and 10k+ goal poses. Notably, our method relies solely on
+        object pose information for universal dexterous functional pre-
+        grasp manipulation by using extrinsic dexterity and adjusting
+        from feedback. Additional experiments under noisy object pose
+        observation showcase the robustness of our method and its
+        potential for real-world applications.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  </div>
+
+  <!-- Paper video. -->
+  <br>
+  <br>
+
+  <!-- <div class="container is-max-widescreen">
+
+    <div class="rows">
+      <h2 class="title is-3">Video</h2>
+      <div class="publication-video">
+        <iframe src="https://www.youtube.com/embed/Yvn4eR05A3M"
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div> -->
+
+</section>
+
+<!-- <section class="section">
+  <div class="container is-max-widescreen">
+
+    <div class="rows">
+      <h2 class="title is-3">Dexterous Manipulation Behaviors</h2>
+      
+      <p class="content has-text-justified">
+        <li><strong>Extrinsic Dexterity Usage</strong>: During a task where robot is setting the table, the user can specify behavioral preferences such as “I am left-handed”, which requires the robot to comprehend its meaning in the context of the task. VoxPoser decides that it should move the fork from the right side of the bowl to the left side.</li>
+        <li><strong>Adaptability</strong>: For tasks that require high precision such as “covering the teapot with the lid”, the user can give precise instructions to the robot such as “you’re off by 1cm”. VoxPoser similarly adjusts its action based on the feedback.</li>
+      </p>
+      <br>
+      <div style="text-align: center;">
+        <img src="media/figures/emergent.jpg" class="interpolation-image" style="width: 100%; height: auto;"/>
+      </div>
+    </div>
+
+  </div>
+
+</section> -->
+<section class="section">
+  <div class="container is-max-widescreen">
+
+    <div class="rows">
+      <h2 class="title is-3">Intelligent Manipulation Behaviors</h2>
+      
+      <p class="content has-text-justified">
+        
+      </p>
+      
+      <div class="columns">
+        <div class="column has-text-centered">
+          <img src="media/figures/extrinsic dexterity usage.png" class="interpolation-image" style="width: auto; height: 70%;"/>
+          <p style="text-align:center">
+            <b>Extrinsic Dexterity Usage:</b> Although our policy failed to pull up the pan initially, it adjusted by lowering the arm
+            on the second attempt, successfully pulling up the pan.
+          </p>
+        </div>
+
+        <div class="column has-text-centered">
+          <img src="media/figures/adjust.png" class="interpolation-image" style="width: auto; height: 70%;"/>
+          <p style="text-align:center">
+            <b>Adaptability:</b> Although our policy failed to pull up the pan initially, it adjusted by lowering the arm
+            on the second attempt, successfully pulling up the pan.
+          </p>
+        </div>
+      </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-widescreen">
+
+    <div class="rows">
+      <h2 class="title is-3">Performance under Different Object Categories</h2>
+      
+      <p class="content has-text-justified">
+        While our method achieves a high success rate across the entire dataset, it still struggles with irregularly shaped objects, particularly thin and slender ones like knives and pens.
+      </p>
+      
+      <div class="columns">
+        <div class="column has-text-centered">
+          <img src="media/figures/per cat succ.png" class="interpolation-image" style="width: auto; height: 90%;"/>
+          <p style="text-align:center">
+          </p>
+        </div>
+  </div>
+  </div>
+</section>
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-widescreen content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{huang2023voxposer,
+      title={VoxPoser: Composable 3D Value Maps for Robotic Manipulation with Language Models},
+      author={Huang, Wenlong and Wang, Chen and Zhang, Ruohan and Li, Yunzhu and Wu, Jiajun and Fei-Fei, Li},
+      journal={arXiv preprint arXiv:2307.05973},
+      year={2023}
+    }</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content has-text-centered">
+          <p>
+            Website template borrowed from <a href="https://voxposer.github.io/">VoxPoser</a>. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
