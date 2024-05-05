@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="UniDexFPM: Universal Dexterous Functional Pre-grasp Manipulation Via Diffusion Policy">
+        content="Dexterous Functional Pre-Grasp Manipulation with Diffusion Policy">
   <meta name="keywords" content="Dexterous Manipulation">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>UniDexFPM</title>
@@ -86,7 +86,7 @@
     <div class="container is-fullhd">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">UniDexFPM: Universal Dexterous Functional Pre-grasp Manipulation Via Diffusion Policy</h1>
+          <h1 class="title is-1 publication-title">Dexterous Functional Pre-Grasp Manipulation with Diffusion Policy</h1>
           <!-- <h3 class="title is-4 conference-authors"><a target="_blank" href="https://www.corl2023.org/">CoRL 2023 (Oral)</a></h3> -->
           <div class="is-size-5 publication-authors">
             <span class="author-block">
@@ -102,7 +102,7 @@
               <a target="_blank" href="">Jingbo Cheng</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a target="_blank" href="https://www.yangyaodong.com/">Yaodong Yang</a><sup>4,5</sup>,
+              <a target="_blank" href="https://www.yangyaodong.com/">Yaodong Yang</a><sup>4</sup>,
             </span>
             <span class="author-block">
               <a target="_blank" href="https://yzhu.io/">Yixin Zhu</a><sup>4</sup>
@@ -117,7 +117,7 @@
             <span class="author-block"><sup>2</sup>PKU-Agibot Lab, School of Computer Science, Peking University</span>
             <span class="author-block"><sup>3</sup>National Key Laboratory for Multimedia Information Processing, School of Computer Science, Peking University</span>
             <span class="author-block"><sup>4</sup>Institute for Artificial Intelligence, Peking University</span>
-            <span class="author-block"><sup>5</sup>National Key Laboratory of General AI, Beijing Institute for General Artificial Intelligence</span>
+            <!-- <span class="author-block"><sup>5</sup>National Key Laboratory of General AI, Beijing Institute for General Artificial Intelligence</span> -->
             <span class="author-block"><sup>*</sup>Equal Contribution</span>
             <span class="author-block"><sup>&#x2709</sup>Corresponding Author</span>
           </div>
@@ -148,7 +148,7 @@
 
             <!-- Video Link. -->
             <span class="link-block">
-              <a target="_blank" href="https://www.youtube.com/watch?v=s1NuQoyEZnI"
+              <a target="_blank" href="https://www.youtube.com/watch?v=aYpBaCiScGg"
                  class="external-link button is-normal is-rounded is-dark">
                 <span class="icon">
                     <i class="fab fa-youtube"></i>
@@ -185,8 +185,7 @@
         </div>
         <br>
         <h2 class="subtitle has-text-centered">
-        <span class="dperact">UniDexFPM</span> utilizes extrinsic dexterity to continuously reposition and reorient diverse objects to successfully match the goal functional grasp
-        poses.
+          Our closed-loop manipulation policy continuously repositions and reorients diverse objects to match the functional grasp goal poses successfully.
         </h2>
       </div>
     </div>
@@ -469,7 +468,7 @@
 </section>
 <h2 class="subtitle has-text-centered">
 </br>
-  UniDexFPM can generalize to diverse objects and functional goal poses without object geometry information.
+  Our method can generalize to diverse objects and functional goal poses without object geometry information.
 </h2>
 
 
@@ -481,27 +480,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Objects in the real world are often not naturally
-        positioned for functional grasping, which usually requires
-        repositioning and reorientation before they can be grasped,
-        a process known as pre-grasp manipulation. However, effective learning of universal dexterous functional pre-grasp
-        manipulation necessitates precise control over relative position,
-        relative orientation, and contact between the hand and object,
-        while generalizing to diverse dynamic scenarios with varying
-        objects and goal poses. We address the challenge by using
-        teacher-student learning. We propose a novel mutual reward
-        that incentivizes agents to jointly optimize three key criteria.
-        Furthermore, we introduce a pipeline that leverages a mixture-of-
-        experts strategy to learn diverse manipulation policies, followed
-        by a diffusion policy to capture complex action distributions
-        from these experts. Our method achieves a success rate of
-        72.6% across 30+ object categories encompassing 1400+ objects
-        and 10k+ goal poses. Notably, our method relies solely on
-        object pose information for universal dexterous functional pre-
-        grasp manipulation by using extrinsic dexterity and adjusting
-        from feedback. Additional experiments under noisy object pose
-        observation showcase the robustness of our method and its
-        potential for real-world applications.
+            In real-world scenarios, objects often require repositioning and reorientation before they can be grasped, a process known as pre-grasp manipulation. Learning universal dexterous functional pre-grasp manipulation requires precise control over the relative position, orientation, and contact between the hand and object while generalizing to diverse dynamic scenarios with varying objects and goal poses. To address this challenge, we propose a teacher-student learning approach that utilizes a novel mutual reward, incentivizing agents to optimize three key criteria jointly. Additionally, we introduce a pipeline that employs a mixture-of-experts strategy to learn diverse manipulation poli- cies, followed by a diffusion policy to capture complex action distributions from these experts. Our method achieves a success rate of 72.6% across more than 30 object categories by leveraging extrinsic dexterity and adjusting from feedback.
           </p>
         </div>
       </div>
@@ -519,7 +498,7 @@
     <div class="rows">
       <h2 class="title is-3">Video</h2>
       <div class="publication-video">
-        <iframe src="https://www.youtube.com/embed/s1NuQoyEZnI?si=qkh1JXb2p94Vv-1y"
+        <iframe src="https://www.youtube.com/embed/aYpBaCiScGg?si=lGLwM9AJ3r7A-MC_"
                 frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
     </div>
@@ -548,8 +527,7 @@
         <div class="column has-text-centered">
           <img src="media/figures/adjust.png" class="interpolation-image" style="width: auto; height: 70%;"/>
           <p style="text-align:center">
-            <b>Adaptability:</b> Although our policy failed to pull up the pan initially, it adjusted by lowering the arm
-            on the second attempt, successfully pulling up the pan.
+            <b>Adaptability:</b> Although our policy may initially fail to manipulate objects, it adjusts its policy on the second attempt, successfully manipulating them.
           </p>
         </div>
       </div>
